@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,25 +16,46 @@
 
   <!-- ─────────── TOP META BAR ─────────── -->
   <header class="meta-bar">
-    <span class="meta-bar__item">F-TSPK / ITS</span>
-    <span class="meta-bar__item meta-bar__item--center">OPEN CRIT &nbsp;·&nbsp; <span id="liveCount">000</span> ENTRIES</span>
-    <span class="meta-bar__item meta-bar__item--right">2026 / SURABAYA</span>
+    <span class="meta-bar__item">CIVPLAN-ITS</span>
+    <span class="meta-bar__item meta-bar__item--right">OPEN CRIT &nbsp;·&nbsp; <span id="liveCount">000</span> ENTRIES</span>
   </header>
 
-  <!-- ─────────── HERO ─────────── -->
-  <section class="hero">
-    <div class="hero__index">N°01 — GALLERY</div>
-    <h1 class="hero__title">
-      Pameran<br>
-      <span class="hero__title--accent">Karya Studio</span><br>
-      Arsitektur.
-    </h1>
-    <p class="hero__lede">
-      Sebuah ruang terbuka untuk membaca, mengkritisi, dan mengapresiasi
-      karya studio Departemen Arsitektur ITS. Setiap kiriman adalah percakapan
-      yang menunggu dijawab.
-    </p>
-    <div class="hero__rule"></div>
+  <!-- ─────────── HERO — EDITORIAL COVER ─────────── -->
+  <section class="hero" aria-label="Pameran Karya Studio — Open Crit">
+
+    <!-- Top masthead row -->
+    <div class="hero__top">
+      <span class="hero__pub">Arsitektur ITS</span>
+      <span class="hero__rule" aria-hidden="true"></span>
+      <span class="hero__edition">Genap <span class="hero__num">2025</span> / <span class="hero__num">2026</span></span>
+    </div>
+
+    <!-- Main composition -->
+    <div class="hero__body">
+      <h1 class="hero__title">
+        <span class="hero__line">Pameran</span>
+        <span class="hero__line">Karya</span>
+        <span class="hero__line">Studio<span class="hero__period">.</span></span>
+      </h1>
+
+      <aside class="hero__feature">
+        <span class="hero__feature-mark" aria-hidden="true">—</span>
+        <span class="hero__feature-text"><em>open</em>&nbsp;<em>crit.</em></span>
+      </aside>
+    </div>
+
+    <!-- Bottom metadata row -->
+    <div class="hero__bottom">
+      <span class="hero__location">
+        <span class="hero__dot" aria-hidden="true">●</span>
+        Surabaya
+      </span>
+      <span class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">scroll</span>
+        <span class="hero__scroll-arrow">↓</span>
+      </span>
+    </div>
+
   </section>
 
   <!-- ─────────── HOW IT WORKS ─────────── -->
@@ -128,18 +149,7 @@
 
   <!-- ─────────── FOOTER ─────────── -->
   <footer class="footer">
-    <div class="footer__col">
-      <span class="footer__label">DEPT.</span>
-      <p>Arsitektur — Fakultas Teknik Sipil, Perencanaan, dan Kebumian. Institut Teknologi Sepuluh Nopember.</p>
-    </div>
-    <div class="footer__col">
-      <span class="footer__label">YEAR</span>
-      <p>2026</p>
-    </div>
-    <div class="footer__col">
-      <span class="footer__label">©</span>
-      <p>Open Crit — Pameran Karya Studio</p>
-    </div>
+    <p class="footer__text">Arsitektur — Fakultas Teknik Sipil, Perencanaan, dan Kebumian. Institut Teknologi Sepuluh Nopember . 2026</p>
   </footer>
 
   <script src="script.js" defer></script>
