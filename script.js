@@ -138,12 +138,8 @@ function parseTimestamp(str) {
 function formatTimestamp(dateStr) {
   const d = parseTimestamp(dateStr);
   if (!d) return '';
-  const dd = String(d.getDate()).padStart(2, '0');
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const yy = String(d.getFullYear()).slice(-2);
-  const hh = String(d.getHours()).padStart(2, '0');
-  const mn = String(d.getMinutes()).padStart(2, '0');
-  return `${dd}/${mm}/${yy} · ${hh}:${mn}`;
+  const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 function escapeHTML(s) {
