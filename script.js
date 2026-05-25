@@ -19,7 +19,7 @@ const COL = { TIME: 0, CONTENT: 1, NAME: 2, LIKE: 3, HUG: 4, IDEA: 5 };
 const REACTIONS = [
   { type: 'like', label: 'Love',     icon: '♥', col: COL.LIKE },
   { type: 'hug',  label: 'Awe',      icon: '◎', col: COL.HUG },
-  { type: 'idea', label: 'Inspired', icon: '✦', col: COL.IDEA },
+  { type: 'idea', label: 'Insightful', icon: '✦', col: COL.IDEA },
 ];
 
 /* Category detection from content hashtags */
