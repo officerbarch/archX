@@ -16,7 +16,7 @@
   --gray-100: #f4f4f4;
 
   /* Single typeface — Helvetica Neue with Inter fallback for non-Mac */
-  --font: 'Helvetica Neue', 'Inter', Helvetica, Arial, sans-serif;
+  --font: 'Roboto', Helvetica, Arial, sans-serif;
 
   /* Spacing */
   --pad-x: clamp(1.25rem, 4vw, 3.5rem);
