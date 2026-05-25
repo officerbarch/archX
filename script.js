@@ -121,21 +121,29 @@ function detectCategory(content) {
   for (const c of CATEGORIES) {
     if (lower.includes(c.match)) return c;
   }
-  return { cls: '', label: 'Confess' };
+  return { cls: '', label: '' };
 }
 
-function formatRelative(dateStr) {
-  const d = new Date(dateStr);
-  if (isNaN(d)) return '';
-  const diffMs = Date.now() - d.getTime();
-  const diffMin = Math.floor(diffMs / 60000);
-  if (diffMin < 1)  return 'baru saja';
-  if (diffMin < 60) return `${diffMin} menit lalu`;
-  const diffHr = Math.floor(diffMin / 60);
-  if (diffHr < 24) return `${diffHr} jam lalu`;
-  const diffDay = Math.floor(diffHr / 24);
-  if (diffDay < 30) return `${diffDay} hari lalu`;
-  return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+/* Robust timestamp parser — handles ISO, US, and DD/MM/YYYY locale formats */
+function parseTimestamp(str) {
+  if (!str) return null;
+  const d = new Date(str);
+  if (!isNaN(d)) return d;
+  // Fallback for DD/MM/YYYY HH:MM:SS (Indonesian locale)
+  const m = str.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})[\s,]+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?/);
+  if (m) return new Date(+m[3], +m[2] - 1, +m[1], +m[4], +m[5], +m[6] || 0);
+  return null;
+}
+
+function formatTimestamp(dateStr) {
+  const d = parseTimestamp(dateStr);
+  if (!d) return '';
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mn = String(d.getMinutes()).padStart(2, '0');
+  return `${dd}/${mm}/${yy} · ${hh}:${mn}`;
 }
 
 function escapeHTML(s) {
@@ -174,15 +182,16 @@ function markReacted(rowIndex, type) {
    ════════════════════════════════════════════════════════════════ */
 function sortData(data, mode) {
   const arr = [...data];
+  const ts = d => (parseTimestamp(d.time) || new Date(0)).getTime();
   if (mode === 'top') {
     arr.sort((a, b) => {
       const sa = (+a.like || 0) + (+a.hug || 0) + (+a.idea || 0);
       const sb = (+b.like || 0) + (+b.hug || 0) + (+b.idea || 0);
       if (sb !== sa) return sb - sa;
-      return new Date(b.time) - new Date(a.time); // tie-break by recency
+      return ts(b) - ts(a);
     });
   } else {
-    arr.sort((a, b) => new Date(b.time) - new Date(a.time));
+    arr.sort((a, b) => ts(b) - ts(a));
   }
   return arr;
 }
@@ -238,8 +247,8 @@ function buildCard(item) {
   return `
     <article class="card ${cat.cls}" data-row="${item.row}">
       <div class="card__meta">
-        <span class="card__cat-label">${cat.label}</span>
-        <span class="card__time">${formatRelative(item.time)}</span>
+        ${cat.label ? `<span class="card__cat-label">${cat.label}</span>` : ''}
+        <span class="card__time">${formatTimestamp(item.time)}</span>
       </div>
       ${tagsHTML}
       <div class="card__text ${needsMore ? 'card__text--fade' : ''}">${text}</div>
