@@ -8,10 +8,10 @@ const SHEET_ID    = '1TU-kxx73GV57gKBRThfYDXcfcafYejoa7WzJ20SEpFY';
 const SHEET_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
 const WEBAPP_URL  = 'https://script.google.com/macros/s/AKfycbwJQlyvjd2YtuQey5OXNgwSt4max4gwreS3OPOSMpIAu_XJwYABlxzVOFw7H_dBm6l3/exec';
 
-/* Kuratorial sheet — second sheet tab (gid=1) — adjust if needed */
-const KUR_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1`;
+/* Kuratorial sheet — correct gid from Google Sheets */
+const KUR_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1682806548`;
 
-/* Google OAuth Client ID — replace with your actual Client ID from Google Cloud Console */
+/* Google OAuth Client ID */
 const GOOGLE_CLIENT_ID = '739812277155-l5mcobl1utg5bfm24n3ptn5uh4vcqnjj.apps.googleusercontent.com';
 
 /* Admin whitelist */
@@ -871,6 +871,15 @@ async function submitKuratorial() {
     return;
   }
 
+  if (!currentUser) {
+    if (status) {
+      status.className = 'send-status is-error';
+      status.textContent = 'Anda harus login terlebih dahulu.';
+      status.hidden = false;
+    }
+    return;
+  }
+
   btn.disabled = true;
   btn.textContent = 'Menyimpan…';
   if (status) status.hidden = true;
@@ -886,24 +895,28 @@ async function submitKuratorial() {
       ...(editRow ? { row: editRow } : {}),
     });
 
+    /* no-cors karena Apps Script tidak support CORS dari browser */
     await fetch(`${WEBAPP_URL}?${params}`, { mode: 'no-cors' });
 
+    /* Anggap berhasil setelah fetch selesai tanpa throw */
     if (status) {
       status.className = 'send-status is-success';
-      status.textContent = '✓ Berhasil disimpan! Akan muncul dalam beberapa detik.';
+      status.textContent = '✓ Berhasil disimpan! Memuat ulang daftar...';
       status.hidden = false;
     }
 
     closeEditor();
+    /* Reload setelah 3 detik beri waktu Sheets update */
     setTimeout(() => {
       loadAdminKurList();
       loadKuratorial();
-    }, 2500);
+    }, 3000);
 
   } catch (err) {
+    console.error('submitKuratorial error:', err);
     if (status) {
       status.className = 'send-status is-error';
-      status.textContent = 'Gagal menyimpan. Coba lagi.';
+      status.textContent = 'Gagal mengirim. Periksa koneksi internet.';
       status.hidden = false;
     }
   } finally {
@@ -970,8 +983,18 @@ async function loadAdminKurList() {
         if (!confirm(`Hapus "${title}"? Tindakan ini tidak bisa dibatalkan.`)) return;
         btn.textContent = 'Menghapus…';
         btn.disabled = true;
-        await fetch(`${WEBAPP_URL}?action=deleteKuratorial&row=${row}&email=${currentUser.email}`, { mode: 'no-cors' });
-        setTimeout(loadAdminKurList, 1500);
+        try {
+          await fetch(`${WEBAPP_URL}?action=deleteKuratorial&row=${row}&email=${encodeURIComponent(currentUser.email)}`, { mode: 'no-cors' });
+          /* Optimistic — hapus item dari UI langsung */
+          btn.closest('.admin-list-item').remove();
+          /* Reload list setelah 3 detik */
+          setTimeout(loadAdminKurList, 3000);
+        } catch (err) {
+          console.error('delete error:', err);
+          btn.textContent = 'Hapus';
+          btn.disabled = false;
+          alert('Gagal menghapus. Periksa koneksi internet.');
+        }
       });
     });
 
