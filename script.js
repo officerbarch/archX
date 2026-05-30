@@ -237,10 +237,10 @@ function initGoogleAuth() {
 }
 
 function triggerGoogleSignIn() {
-  if (typeof google !== 'undefined' && google.accounts) {
+  const hasValidClientId = GOOGLE_CLIENT_ID && !GOOGLE_CLIENT_ID.includes('YOUR_GOOGLE');
+  if (hasValidClientId && typeof google !== 'undefined' && google.accounts) {
     google.accounts.id.prompt();
   } else {
-    /* Fallback: show manual input if GIS not loaded (dev mode) */
     promptFallbackLogin();
   }
 }
