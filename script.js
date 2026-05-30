@@ -12,7 +12,7 @@ const WEBAPP_URL  = 'https://script.google.com/macros/s/AKfycbx5toGsz0ldR7jDlxix
 const KUR_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1`;
 
 /* Google OAuth Client ID — replace with your actual Client ID from Google Cloud Console */
-const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '739812277155-l5mcobl1utg5bfm24n3ptn5uh4vcqnjj.apps.googleusercontent.com';
 
 /* Admin whitelist */
 const ADMIN_EMAILS = [
