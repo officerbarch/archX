@@ -3,155 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPEN CRIT — Pameran Studio Arsitektur ITS</title>
-  <meta name="description" content="Galeri karya studio Departemen Arsitektur ITS. Submit kritik, apresiasi, dan tanya jawab.">
+  <title>Open Crit — Pameran Studio Arsitektur ITS</title>
+  <meta name="description" content="Galeri karya studio & kuratorial Departemen Arsitektur ITS.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,300;1,6..12,400;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ─────────── TOP META BAR ─────────── -->
-  <header class="meta-bar">
-    <span class="meta-bar__item">Panel</span>
-    <span class="meta-bar__item meta-bar__item--right"> · Showing&nbsp;:&nbsp; <span id="liveCount">000</span> Posts</span>
-  </header>
-
-  <!-- ─────────── HERO — EDITORIAL COVER ─────────── -->
-  <section class="hero" aria-label="Pameran Karya Studio — Open Crit">
-
-    <!-- Top masthead row -->
-    <div class="hero__top">
-     
-     
-      <span class="hero__edition">Genap <span class="hero__num">2025</span>/<span class="hero__num">2026</span></span>
-    </div>
-
-    <!-- Main composition -->
-    <div class="hero__body">
-      <h1 class="hero__title">
-        <span class="hero__line">Pameran</span>
-        <span class="hero__line">Karya</span>
-        <span class="hero__line">Studio<span class="hero__period">.</span></span>
-      </h1>
-
-      <aside class="hero__feature">
-        <span class="hero__feature-mark" aria-hidden="true">—</span>
-        <span class="hero__feature-text"><em>open</em>&nbsp;<em>crit.</em></span>
-      </aside>
-    </div>
-
-    <!-- Bottom metadata row -->
-    <div class="hero__bottom">
-      <span class="hero__location">
-        <span class="hero__dot" aria-hidden="true">●</span>
-        Kampus Arsitektur ITS - Surabaya
-      </span>
-      <span class="hero__scroll" aria-hidden="true">
-        <span class="hero__scroll-label">scroll</span>
-        <span class="hero__scroll-arrow">↓</span>
-      </span>
-    </div>
-
-  </section>
-
-  <!-- ─────────── HOW IT WORKS ─────────── -->
-  <section class="howto">
-    <div class="howto__col">
-      <span class="howto__num">01</span>
-      <h3>Tulis kiriman</h3>
-      <p>Gunakan tanda <code>#</code> untuk klasifikasi atau memberikan komentar pada sebuah karya. Tempelkan URL gambar/video untuk lampiran.</p>
-    </div>
-    <div class="howto__col">
-      <span class="howto__num">02</span>
-      <h3>Saring tagar</h3>
-      <p>Klik tag pada kartu untuk menyaring kiriman atau melihat komentar terkait pada karya yang sama.</p>
-    </div>
-    <div class="howto__col">
-      <span class="howto__num">03</span>
-      <h3>Beri reaksi</h3>
-      <p>Tiga gestur singkat: <em>Love</em>, <em>Awe</em>, dan <em>Insightful</em>. Hasilnya akan terakumulasi secara real-time.</p>
-    </div>
-  </section>
-
-  <!-- ─────────── TAG LEGEND ─────────── -->
-  <section class="legend">
-    <h4 class="legend__title">TAGAR BANTU — KLASIFIKASI STUDIO</h4>
-    <div class="legend__row">
-      <span class="chip" data-tag="#DPA1">#DPA1</span>
-      <span class="chip" data-tag="#DPA2">#DPA2</span>
-      <span class="chip" data-tag="#PA1">#PA1</span>
-      <span class="chip" data-tag="#PA2">#PA2</span>
-      <span class="chip" data-tag="#PA3">#PA3</span>
-      <span class="chip" data-tag="#PA4">#PA4</span>
-      <span class="chip" data-tag="#PA5">#PA5</span>
-      <span class="chip" data-tag="#TA">#TA</span>
-      <span class="chip" data-tag="#PPAr">#PPAr</span>
-      <span class="chip" data-tag="#Pasca">#Pasca</span>
-    </div>
-  </section>
-
-  <!-- ─────────── SUBMIT FORM ─────────── -->
-  <section class="submit">
-    <div class="submit__head">
-      <span class="submit__label">SUBMIT</span>
-      <h2 class="submit__title">Beri Komentar atau Kritik.</h2>
-    </div>
-    <div class="submit__form">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeszND9iArWPpnxdWOv3PSclifzq5QkddfScoQSiOWLtViSbg/viewform?embedded=true"
-        width="100%" height="540" frameborder="0" marginheight="0" marginwidth="0">
-        Memuat…
-      </iframe>
-    </div>
-  </section>
-
-  <!-- ─────────── GALLERY CONTROLS ─────────── -->
-  <section class="gallery">
-    <div class="gallery__head">
-      <div class="gallery__title-block">
-        <span class="gallery__label">PANELS</span>
-        <h2 class="gallery__title">Kiriman terbaru.</h2>
+  <!-- ─────────── NAVBAR ─────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a class="navbar__logo" href="#" onclick="showPage('panel'); return false;">
+        <img src="Lambang_Wordmark_ITSPutih.png" alt="ITS" height="30">
+      </a>
+      <div class="navbar__menu">
+        <a class="navbar__link is-active" data-page="panel" href="#" onclick="showPage('panel'); return false;">Panel</a>
+        <a class="navbar__link" data-page="kuratorial" href="#" onclick="showPage('kuratorial'); return false;">Kuratorial</a>
+        <!-- Admin link — hidden by default, shown by JS if admin -->
+        <a class="navbar__link navbar__link--admin" data-page="admin" href="#"
+           onclick="showPage('admin'); return false;" id="adminNavLink" hidden>
+          ⚙ Admin
+        </a>
       </div>
+    </div>
+  </nav>
 
-      <div class="gallery__controls">
-        <div class="sort-toggle" role="tablist" aria-label="Urutkan">
-          <button class="sort-toggle__btn is-active" data-sort="top" role="tab" aria-selected="true">
-            <span class="sort-toggle__dot"></span>Top
-          </button>
-          <button class="sort-toggle__btn" data-sort="recent" role="tab" aria-selected="false">
-            <span class="sort-toggle__dot"></span>Recent
-          </button>
+  <!-- ═══════════════════════════════════════
+       PAGE: PANEL
+  ════════════════════════════════════════════ -->
+  <div id="page-panel" class="page is-active">
+
+    <!-- Hero with slideshow background -->
+    <section class="panel-hero" aria-label="Open Crit">
+      <div class="hero-slides" id="heroSlides" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-content__inner">
+          <div class="hero__eyebrow">
+            <span class="hero__dot"></span>
+            <span>Pameran Karya Studio — Genap 2025/2026</span>
+          </div>
+          <h1 class="hero__title">Open<br><em>Crit.</em></h1>
+          <p class="hero__location">Kampus Arsitektur ITS · Surabaya</p>
+        </div>
+        <div class="hero__count">
+          <span class="hero__count-num" id="liveCount">000</span>
+          <span class="hero__count-label">Kiriman</span>
         </div>
       </div>
+    </section>
+
+    <!-- Submit + How-to -->
+    <section class="submit-section">
+      <div class="submit-section__inner">
+
+        <!-- LEFT -->
+        <div class="submit-left">
+          <h2 class="submit-left__title">Beri Komentar<br>atau Kritik.</h2>
+          <div class="howto-list">
+            <div class="howto-item">
+              <span class="howto-item__num">01</span>
+              <div>
+                <h4>Tulis kiriman</h4>
+                <p>Gunakan tanda <code>#</code> untuk klasifikasi. Tempelkan URL gambar/video untuk lampiran.</p>
+              </div>
+            </div>
+            <div class="howto-item">
+              <span class="howto-item__num">02</span>
+              <div>
+                <h4>Saring tagar</h4>
+                <p>Klik tag pada kartu untuk menyaring kiriman atau gunakan pencarian.</p>
+              </div>
+            </div>
+            <div class="howto-item">
+              <span class="howto-item__num">03</span>
+              <div>
+                <h4>Beri reaksi</h4>
+                <p>Tiga gestur: <em>Love</em>, <em>Awe</em>, dan <em>Insightful</em>. Terakumulasi real-time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="submit-right">
+          <div class="tag-bar">
+            <span class="chip" data-tag="#DPA1">#DPA1</span>
+            <span class="chip" data-tag="#DPA2">#DPA2</span>
+            <span class="chip" data-tag="#PA1">#PA1</span>
+            <span class="chip" data-tag="#PA2">#PA2</span>
+            <span class="chip" data-tag="#PA3">#PA3</span>
+            <span class="chip" data-tag="#PA4">#PA4</span>
+            <span class="chip" data-tag="#PA5">#PA5</span>
+            <span class="chip" data-tag="#TA">#TA</span>
+            <span class="chip" data-tag="#PPAr">#PPAr</span>
+            <span class="chip" data-tag="#Pasca">#Pasca</span>
+          </div>
+          <div class="form-box">
+            <div id="loginGate" class="login-gate">
+              <p class="login-gate__text">Masuk dengan akun Google untuk mengirim komentar.</p>
+              <button class="btn-google" id="googleSignInBtn">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Masuk dengan Google
+              </button>
+            </div>
+            <div id="commentForm" class="comment-form" hidden>
+              <div class="comment-form__user" id="userInfo"></div>
+              <textarea id="commentText" class="comment-form__textarea"
+                placeholder="Tulis komentar atau kritik... Gunakan #PA1, #reply, dll. Paste URL gambar untuk lampiran." rows="5"></textarea>
+              <div class="comment-form__footer">
+                <span class="comment-form__hint">URL gambar/video akan otomatis dirender</span>
+                <button class="btn-send" id="sendBtn">Kirim →</button>
+              </div>
+              <div id="sendStatus" class="send-status" hidden></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+      <div class="gallery__head">
+        <div class="gallery__title-block">
+          <span class="gallery__label">Panels</span>
+          <h2 class="gallery__title">Kiriman terbaru.</h2>
+        </div>
+        <div class="gallery__controls">
+          <div class="search-bar">
+            <svg class="search-bar__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" class="search-bar__input" placeholder="Cari kiriman, tag, nama...">
+            <button class="search-bar__clear" id="searchClear" hidden>✕</button>
+          </div>
+          <div class="sort-toggle" role="tablist">
+            <button class="sort-toggle__btn is-active" data-sort="top" role="tab">Top</button>
+            <button class="sort-toggle__btn" data-sort="recent" role="tab">Recent</button>
+          </div>
+        </div>
+      </div>
+      <div id="activeFilter" class="active-filter" hidden>
+        <span class="active-filter__label">Filter aktif</span>
+        <span id="activeFilterTag" class="active-filter__tag"></span>
+        <button id="clearFilter" class="active-filter__clear">✕ Hapus</button>
+      </div>
+      <div id="comments" class="gallery__grid" aria-live="polite">
+        <div class="gallery__loading">Memuat kiriman…</div>
+      </div>
+    </section>
+
+  </div><!-- /page-panel -->
+
+
+  <!-- ═══════════════════════════════════════
+       PAGE: KURATORIAL
+  ════════════════════════════════════════════ -->
+  <div id="page-kuratorial" class="page">
+    <div class="kur-layout">
+      <aside class="kur-sidebar">
+        <div class="kur-sidebar__inner">
+          <span class="kur-sidebar__label">Tahun</span>
+          <div id="kurYearList" class="kur-year-list"></div>
+        </div>
+      </aside>
+      <main class="kur-main">
+        <div class="kur-main__header">
+          <h1 class="kur-main__title">Kuratorial</h1>
+          <p class="kur-main__sub">Departemen Arsitektur ITS</p>
+        </div>
+        <div id="kurContent" class="kur-content">
+          <div class="gallery__loading">Memuat kuratorial…</div>
+        </div>
+      </main>
+    </div>
+  </div><!-- /page-kuratorial -->
+
+
+  <!-- ═══════════════════════════════════════
+       PAGE: ADMIN
+  ════════════════════════════════════════════ -->
+  <div id="page-admin" class="page">
+
+    <!-- Admin gate (shown if not admin) -->
+    <div id="adminGate" class="admin-gate" hidden>
+      <div class="admin-gate__box">
+        <span class="admin-gate__icon">🔒</span>
+        <h2>Akses Terbatas</h2>
+        <p>Halaman ini hanya untuk administrator.</p>
+        <button class="btn-send" onclick="showPage('panel')">Kembali ke Panel</button>
+      </div>
     </div>
 
-    <div id="activeFilter" class="active-filter" hidden>
-      <span class="active-filter__label">FILTER AKTIF</span>
-      <span id="activeFilterTag" class="active-filter__tag"></span>
-      <button id="clearFilter" class="active-filter__clear" aria-label="Hapus filter">✕ Hapus</button>
+    <!-- Admin panel (shown if admin) -->
+    <div id="adminPanel" class="admin-panel" hidden>
+
+      <!-- Admin header -->
+      <div class="admin-header">
+        <div class="admin-header__inner">
+          <div>
+            <span class="admin-header__label">Admin Panel</span>
+            <h1 class="admin-header__title">Manajemen Kuratorial</h1>
+          </div>
+          <div class="admin-header__actions">
+            <button class="btn-admin-new" id="btnNewPost">+ Tulisan Baru</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two-column layout: editor + list -->
+      <div class="admin-body">
+
+        <!-- Editor (hidden by default, shown when new/edit) -->
+        <div class="admin-editor" id="adminEditor" hidden>
+          <div class="admin-editor__head">
+            <h3 id="editorTitle">Tulisan Baru</h3>
+            <button class="admin-editor__close" id="btnCloseEditor">✕</button>
+          </div>
+
+          <div class="admin-editor__form">
+            <div class="admin-field">
+              <label class="admin-label">Judul</label>
+              <input type="text" id="kurJudul" class="admin-input"
+                     placeholder="mis. Kuratorial 01 — Genap 2025/2026">
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label">Tanggal</label>
+              <input type="date" id="kurTanggal" class="admin-input">
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label">URL Gambar Utama <span class="admin-label__hint">(opsional)</span></label>
+              <input type="url" id="kurGambar" class="admin-input"
+                     placeholder="https://drive.google.com/... atau URL gambar lain">
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label">Isi Tulisan</label>
+              <!-- Toolbar -->
+              <div class="editor-toolbar">
+                <button class="editor-tool" data-cmd="bold" title="Bold"><b>B</b></button>
+                <button class="editor-tool" data-cmd="italic" title="Italic"><i>I</i></button>
+                <button class="editor-tool" data-cmd="underline" title="Underline"><u>U</u></button>
+                <div class="editor-tool-sep"></div>
+                <button class="editor-tool" data-cmd="h2" title="Heading">H2</button>
+                <button class="editor-tool" data-cmd="h3" title="Sub-heading">H3</button>
+                <div class="editor-tool-sep"></div>
+                <button class="editor-tool" data-cmd="insertUnorderedList" title="Bullet list">• List</button>
+                <button class="editor-tool" data-cmd="insertOrderedList" title="Numbered list">1. List</button>
+                <div class="editor-tool-sep"></div>
+                <button class="editor-tool" data-cmd="link" title="Insert link">🔗</button>
+                <button class="editor-tool" data-cmd="removeFormat" title="Clear format">✕ Format</button>
+              </div>
+              <!-- Rich text area -->
+              <div id="kurIsi" class="admin-richtext" contenteditable="true"
+                   data-placeholder="Tulis isi kuratorial di sini..."></div>
+            </div>
+
+            <!-- Preview -->
+            <div class="admin-field">
+              <label class="admin-label">Preview</label>
+              <div id="kurPreview" class="admin-preview kur-entry__body"></div>
+            </div>
+
+            <div class="admin-editor__actions">
+              <button class="btn-admin-cancel" id="btnCancelEdit">Batal</button>
+              <button class="btn-send" id="btnSubmitKur">Simpan & Publish →</button>
+            </div>
+            <div id="adminSaveStatus" class="send-status" hidden></div>
+          </div>
+        </div>
+
+        <!-- Existing entries list -->
+        <div class="admin-list-section">
+          <div class="admin-list-head">
+            <h3 class="admin-list-title">Tulisan Tersimpan</h3>
+            <button class="btn-refresh" id="btnRefreshKur">↻ Refresh</button>
+          </div>
+          <div id="adminKurList" class="admin-list">
+            <div class="gallery__loading">Memuat data…</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div id="comments" class="gallery__grid" aria-live="polite">
-      <!-- Cards akan di-render di sini -->
-      <div class="gallery__loading">Memuat kiriman…</div>
-    </div>
-  </section>
+  </div><!-- /page-admin -->
 
-  <!-- ─────────── IMAGE MODAL ─────────── -->
+
+  <!-- Image Modal -->
   <div id="imageModal" class="modal" hidden>
     <button class="modal__close" aria-label="Tutup">✕</button>
     <img id="fullImage" class="modal__img" alt="">
   </div>
 
-  <!-- ─────────── FOOTER ─────────── -->
+  <!-- Footer -->
   <footer class="footer">
-    <p class="footer__text">Departemen Arsitektur | Fakultas Teknik Sipil, Perencanaan, dan Kebumian | Institut Teknologi Sepuluh Nopember | 2026</p>
+    <div class="footer__inner">
+      <div class="footer__logo">
+        <img src="Lambang_Wordmark_ITSPutih.png" alt="Institut Teknologi Sepuluh Nopember" height="44">
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__info">
+        <p>Departemen Arsitektur, Fakultas Teknik Sipil, Perencanaan, dan Kebumian,</p>
+        <p>Institut Teknologi Sepuluh Nopember</p>
+        <p>Kampus ITS Sukolilo Surabaya</p>
+        <p>Kode Pos : 60111</p>
+        <p>Telp : (031) 5927290, (031) 5996972</p>
+      </div>
+    </div>
   </footer>
 
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
