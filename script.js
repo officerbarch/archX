@@ -6,7 +6,7 @@
 /* ─────────── CONFIG ─────────── */
 const SHEET_ID    = '1TU-kxx73GV57gKBRThfYDXcfcafYejoa7WzJ20SEpFY';
 const SHEET_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
-const WEBAPP_URL  = 'https://script.google.com/macros/s/AKfycbx5toGsz0ldR7jDlxixosQrcG8b7Twfnfl_xraARITfV2dNHXdkJDN73ZVTS9CIeec/exec';
+const WEBAPP_URL  = 'https://script.google.com/macros/s/AKfycbwJQlyvjd2YtuQey5OXNgwSt4max4gwreS3OPOSMpIAu_XJwYABlxzVOFw7H_dBm6l3/exec';
 
 /* Kuratorial sheet — second sheet tab (gid=1) — adjust if needed */
 const KUR_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1`;
