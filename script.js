@@ -236,6 +236,10 @@ function initGoogleAuth() {
   if (btn) btn.addEventListener('click', triggerGoogleSignIn);
 }
 
+function isSafari() {
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
 function triggerGoogleSignIn() {
   const hasValidClientId = GOOGLE_CLIENT_ID && !GOOGLE_CLIENT_ID.includes('YOUR_GOOGLE');
   if (hasValidClientId && typeof google !== 'undefined' && google.accounts) {
@@ -246,14 +250,43 @@ function triggerGoogleSignIn() {
 }
 
 function promptFallbackLogin() {
-  /* Simple fallback for when OAuth not configured yet */
-  const name  = prompt('Nama Anda:');
-  const email = prompt('Email Google Anda:');
-  if (name && email) {
+  /* Tampilkan form input yang lebih rapi */
+  const gate = $('#loginGate');
+  if (!gate) return;
+
+  gate.innerHTML = `
+    <p class="login-gate__text">Masuk dengan akun Google Anda.</p>
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px;max-width:320px;">
+      <input type="text" id="fallbackName" placeholder="Nama lengkap"
+        style="font:inherit;font-size:14px;padding:10px 14px;border:1.5px solid var(--gray-300);
+               border-radius:6px;outline:none;width:100%;">
+      <input type="email" id="fallbackEmail" placeholder="Email Gmail Anda"
+        style="font:inherit;font-size:14px;padding:10px 14px;border:1.5px solid var(--gray-300);
+               border-radius:6px;outline:none;width:100%;">
+      <button id="fallbackSubmit" class="btn-google" style="justify-content:center;">
+        Masuk →
+      </button>
+    </div>
+    <p style="font-size:11px;color:var(--ink-light);text-align:center;margin-top:4px;">
+      ${isSafari() ? 'Safari tidak mendukung login Google langsung.' : 'Mode login manual.'}
+    </p>
+  `;
+
+  $('#fallbackSubmit')?.addEventListener('click', () => {
+    const name  = $('#fallbackName')?.value.trim();
+    const email = $('#fallbackEmail')?.value.trim().toLowerCase();
+
+    if (!name) {
+      alert('Nama tidak boleh kosong.'); return;
+    }
+    if (!email || !email.includes('@')) {
+      alert('Email tidak valid.'); return;
+    }
+
     currentUser = { name, email, picture: '' };
     localStorage.setItem(AUTH_KEY, JSON.stringify(currentUser));
     renderAuthUI();
-  }
+  });
 }
 
 function handleCredential(response) {
